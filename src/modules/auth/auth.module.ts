@@ -6,7 +6,6 @@ import { LocalStrategy } from './local.strategy';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './constants';
 import { JwtStrategy } from './jwt.strategy';
-import { LocalAuthGuard } from './local-auth.guard';
 
 @Module({
   imports: [
@@ -17,7 +16,7 @@ import { LocalAuthGuard } from './local-auth.guard';
       signOptions: { expiresIn: '1d' },
     }),
   ],
-  providers: [AuthService, LocalStrategy, JwtStrategy, LocalAuthGuard],
+  providers: [AuthService, LocalStrategy, JwtStrategy],
   exports: [AuthService],
 })
 export class AuthModule {}
