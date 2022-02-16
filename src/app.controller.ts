@@ -10,8 +10,8 @@ export class AppController {
     private readonly appService: AppService,
   ) {}
 
-  
-  @Get('/')
+
+  @Get()
   async getHome() {
     return this.appService.getHome();
   }
