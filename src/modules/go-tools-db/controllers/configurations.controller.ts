@@ -1,5 +1,5 @@
 import { Controller, Get, UseGuards } from '@nestjs/common';
-import { JwtAuthGuard } from 'src/modules/auth/jwt-auth.guard';
+import { AuthGuard } from '@nestjs/passport';
 import { ResultConfigurations } from '../entities/configurations.entity';
 import { ConfigurationService } from '../services/configuration.service';
 
@@ -7,7 +7,7 @@ import { ConfigurationService } from '../services/configuration.service';
 export class ConfigurationsController {
   constructor(private configurationService: ConfigurationService) {}
 
-  @UseGuards(JwtAuthGuard)
+  @UseGuards(AuthGuard('jwt'))
   @Get()
   getConfigurations(): Promise<ResultConfigurations> {
     return this.configurationService.findAllConfigurations();
